@@ -936,14 +936,7 @@
         hero.style.backgroundImage = imgReturn;
         titleEl.innerText = "Welcome back, Babe!";
         subEl.innerText = "Shop with style, shop with MiuCodes.";
-      } else {
-        hero.style.backgroundImage = imgFirst;
-        localStorage.setItem("MiuCodes_visited", "true");
-        setTimeout(() => {
-          titleEl.innerText = "MiuCodes";
-          subEl.innerText = "Explore our collections";
-        }, 4000);
-      }
+      } 
 
       startTimer();
     });
