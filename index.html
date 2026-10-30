@@ -112,9 +112,9 @@
     .view { display: none; }
     .view.active { display: block; }
 
-    /* Hero Banner Retangular */
+    /* Hero Banner Retangular (Ajustado com o padding igual ao container de baixo) */
     .hero-container {
-      padding: 15px 15px 10px 15px;
+      padding: 0 15px 10px 15px;
       max-width: 600px;
       margin: 0 auto;
     }
@@ -148,17 +148,48 @@
       gap: 16px;
     }
 
-    /* CONTAGEM ABAIXO DO BANNER */
-    .home-timer-wrapper {
+    /* BLOCO UNIFICADO: VÍDEO + CONTAGEM HALLOWEEN */
+    .halloween-drop-card {
       background: #ffffff;
       border: 1px solid rgba(240, 195, 182, 0.4);
-      padding: 16px 20px;
-      border-radius: 22px;
+      padding: 20px 16px;
+      border-radius: 26px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
-    .home-timer-title { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; color: var(--candy-peach); }
+
+    .halloween-drop-title {
+      font-size: 11.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--candy-peach);
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15), 0 0 10px rgba(240, 195, 182, 0.2);
+      border: 2px solid rgba(240, 195, 182, 0.35);
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* CONTAGEM DECRESCENTE */
     .timer-grid { display: flex; justify-content: center; gap: 12px; }
     .timer-box { background: rgba(240, 195, 182, 0.15); padding: 8px 12px; border-radius: 12px; min-width: 55px; }
     .timer-num { font-size: 18px; font-weight: bold; color: var(--dark-accent); }
@@ -253,16 +284,11 @@
     .btn-universe:active { transform: scale(0.98); }
 
     /* PRÓXIMO LANÇAMENTO (DROP) */
-    .drop-page-container { padding: 40px 20px; text-align: center; max-width: 500px; margin: 0 auto; }
-    .drop-page-container h2 { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
-    .drop-page-container p { font-size: 14px; color: #666; margin-bottom: 30px; }
-    .drop-box-card {
-      background: var(--pastel-lavender); color: #fff; padding: 35px 20px; border-radius: 26px;
-      box-shadow: 0 10px 30px rgba(203,181,205,0.3);
-    }
-    .drop-box-card h3 { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 700; }
+    .drop-page-container { padding: 40px 20px; text-align: center; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .drop-page-container h2 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+    .drop-page-container p { font-size: 14px; color: #666; margin-bottom: 10px; }
 
-    .back-bar { display: flex; align-items: center; margin-bottom: 16px; }
+    .back-bar { display: flex; align-items: center; margin-bottom: 6px; }
     .btn-back {
       background: rgba(203, 181, 205, 0.25); border: 1px solid var(--pastel-lavender); color: var(--dark-accent);
       padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
@@ -499,7 +525,7 @@
 
   <!-- VISTA 1: HOME PAGE -->
   <div id="homeView" class="view active">
-    <!-- Banner Retangular -->
+    <!-- Banner Retangular (Ajustado) -->
     <div class="hero-container">
       <section class="hero" id="heroSection">
         <h1 id="heroTitle">Welcome, Babe!</h1>
@@ -509,9 +535,19 @@
     </div>
 
     <div class="home-content-container">
-      <!-- Countdown -->
-      <div class="home-timer-wrapper">
-        <div class="home-timer-title">Próximo Lançamento 🌸</div>
+      <!-- BLOCO JUNTANDO O VÍDEO E A CONTAGEM -->
+      <div class="halloween-drop-card">
+        <div class="halloween-drop-title">🎃 Special Halloween Drop</div>
+        
+        <!-- VÍDEO 16:9 DE HALLOWEEN -->
+        <div class="video-container">
+          <video autoplay loop muted playsinline>
+            <source src="https://raw.githubusercontent.com/nlunaoconner-cyber/MiuCodes-Media/main/lv_0_20261030132403.mp4" type="video/mp4">
+            O teu navegador não suporta vídeos.
+          </video>
+        </div>
+
+        <!-- CONTAGEM DECRESCENTE INTEGRADAS -->
         <div class="timer-grid">
           <div class="timer-box"><div class="timer-num" id="tDays">02</div><div class="timer-label">Dias</div></div>
           <div class="timer-box"><div class="timer-num" id="tHours">14</div><div class="timer-label">Horas</div></div>
@@ -599,13 +635,21 @@
       </div>
       <h2>Next Collection Drop</h2>
       <p>Prepara-te para a próxima grande novidade MiuCodes.</p>
-      <div class="drop-box-card">
-        <h3>Lançamento Exclusivo 🌸</h3>
-        <div class="timer-grid" style="margin-top: 15px;">
-          <div class="timer-box" style="background: rgba(255,255,255,0.3);"><div class="timer-num" id="tDays2">02</div><div class="timer-label">Dias</div></div>
-          <div class="timer-box" style="background: rgba(255,255,255,0.3);"><div class="timer-num" id="tHours2">14</div><div class="timer-label">Horas</div></div>
-          <div class="timer-box" style="background: rgba(255,255,255,0.3);"><div class="timer-num" id="tMins2">32</div><div class="timer-label">Min</div></div>
-          <div class="timer-box" style="background: rgba(255,255,255,0.3);"><div class="timer-num" id="tSecs2">05</div><div class="timer-label">Seg</div></div>
+      
+      <!-- VÍDEO + CONTAGEM NA PÁGINA DE DROP -->
+      <div class="halloween-drop-card">
+        <div class="halloween-drop-title">🎃 Special Halloween Drop</div>
+        <div class="video-container">
+          <video autoplay loop muted playsinline>
+            <source src="https://raw.githubusercontent.com/nlunaoconner-cyber/MiuCodes-Media/main/lv_0_20261030132403.mp4" type="video/mp4">
+            O teu navegador não suporta vídeos.
+          </video>
+        </div>
+        <div class="timer-grid">
+          <div class="timer-box"><div class="timer-num" id="tDays2">02</div><div class="timer-label">Dias</div></div>
+          <div class="timer-box"><div class="timer-num" id="tHours2">14</div><div class="timer-label">Horas</div></div>
+          <div class="timer-box"><div class="timer-num" id="tMins2">32</div><div class="timer-label">Min</div></div>
+          <div class="timer-box"><div class="timer-num" id="tSecs2">05</div><div class="timer-label">Seg</div></div>
         </div>
       </div>
     </div>
@@ -664,6 +708,16 @@
 
       <div class="cart-scroll-container" id="cartScrollContainer" onscroll="checkCartScroll()">
         <div id="cartItemsList"></div>
+      </div>
+
+      <!-- CAMPO DE CUPÃO DE DESCONTO -->
+      <div style="margin: 15px 0; background: #fafafa; padding: 12px 14px; border-radius: 16px; border: 1px solid #eee;">
+        <label style="font-size: 12px; font-weight: 700; color: #444; margin-bottom: 6px; display: block;">Tens um cupão de desconto?</label>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" id="couponInput" placeholder="Só pode usar um cupão em cada compra." style="flex: 1; padding: 10px 12px; border: 1.5px solid #ddd; border-radius: 12px; font-size: 13px; outline: none; background: #fff;" />
+          <button onclick="applyCoupon()" style="padding: 0 16px; background: var(--pastel-lavender); color: #fff; border: none; border-radius: 12px; font-weight: 700; font-size: 13px; cursor: pointer;">Aplicar</button>
+        </div>
+        <div id="couponMessage" style="font-size: 11.5px; margin-top: 6px; font-weight: 600; display: none;"></div>
       </div>
 
       <div class="form-group">
@@ -822,7 +876,7 @@
       { name: "Bow-Detail Heeled Sandals", section: "MiuWear", category: "Calçado", price: 1200, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/206733af-3050-4340-818f-074a239bc698.jpg", colors: ["Castanho"] },
       { name: "Wander Hobo Bag", section: "MiuWear", category: "Bolsas", price: 2300, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/99347731-a62f-4908-af86-fcb7b7851f94.png", colors: ["Preto", "Borgonha", "Branco", "Vermelho", "Rosa Claro", "Azul Claro", "Conhaque", "Laranja", "Prata", "Cinza Pérola", "Glicínia", "Rosa Pó", "Coral", "Amarelo", "Azul"] },
       { name: "Arcadie Leather Bag", section: "MiuWear", category: "Bolsas", price: 2500, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/2d278683-93d1-4fcf-80aa-d76222f9cc81.png", colors: ["Black", "Burgundy", "Sand Beige", "Cognac", "Tundra", "Cocoa Brown", "Pumice Stone"] },
-      { name: "Aube Sunglasses", section: "MiuWear", category: "Óculos", price: 470, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/7fac21a7-02c7-40cc-9315-a05985ab2077.png", colors: ["Grey Lenses", "Bronze lenses", "Pink Lenses"] },
+      { name: "Aube Sunglasses", section: "MiuWear", category: "Óculos", price: 470, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403ab2077.png", colors: ["Grey Lenses", "Bronze lenses", "Pink Lenses"] },
       { name: "Pleated Prince of Wales Miniskirt", section: "MiuWear", category: "Saias", price: 2250, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/36a888f3-5be8-4efb-9130-cfb2ca8d248a.png", colors: ["Brown"] },
       { name: "Stretch Jersey Dress", section: "MiuWear", category: "Vestidos", price: 1250, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/a9b5860d-6f2b-4d49-aa8e-15fbbcf15052.png", colors: ["Preto", "Cáqui"] },
       { name: "Patent Leather Hair Clip", section: "MiuWear", category: "Acessórios", price: 360, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/b64afc73-a4c9-4894-b3fe-3a6929efb028.png", colors: ["Preto", "Branco", "Vermelho", "Vanilla", "Azul pastel", "Amarelo-manteiga", "Rosa Pastel", "Rosa-gerânio", "Vermelho vivo"] },
@@ -837,10 +891,8 @@
       // MiuBallet
       { name: "none", section: "MiuBallet", category: "Sapatilha de ponta", price: 60, badge: "New", img: " ", colors: ["none"] },
       
-
       // MiuKids
       { name: "none", section: "MiuKids", category: "Blusas", price: 20, badge: "new", img: "none", colors: ["none"] },
-      
     ];
 
     // DEFINIÇÃO DOS FILTROS POR CADA SEÇÃO
@@ -863,6 +915,12 @@
     let recipientType = "Para mim";
     let knowSenderVal = "Sim";
     let hasMessageVal = "Não";
+
+    // Variáveis para o sistema de cupões e brindes
+    let appliedDiscount = 0;
+    let discountPercent = 0;
+    let appliedCouponCode = "";
+    let freebieItem = null;
 
     function toggleMenu() {
       document.getElementById('menuDrawer').classList.toggle('active');
@@ -929,7 +987,6 @@
       const titleEl = document.getElementById("heroTitle");
       const subEl = document.getElementById("heroSubtitle");
 
-      const imgFirst = "linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/90398b33-a766-45c6-b3ef-b24f68514eaf.jpg')";
       const imgReturn = "linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/5aac8195-dc1a-44a4-8b36-e500835d5201.jpg')";
 
       if (hasVisited) {
@@ -991,20 +1048,49 @@
         </div>
       `).join('');
     }
-
+    
     function startTimer() {
-      let sec = 5, min = 32, hr = 14, day = 2;
-      setInterval(() => {
-        sec--;
-        if (sec < 0) { sec = 59; min--; }
-        if (min < 0) { min = 59; hr--; }
-        if (hr < 0) { hr = 23; day--; }
-        
-        const dStr = day < 10 ? '0' + day : day;
-        const hStr = hr < 10 ? '0' + hr : hr;
-        const mStr = min < 10 ? '0' + min : min;
-        const sStr = sec < 10 ? '0' + sec : sec;
+      // DEFINE A DATA E HORA EXATA DO LANÇAMENTO (Ano, Mês [0 a 11, sendo 9 = Outubro], Dia, Hora, Minuto)
+      const targetDate = new Date(2026, 9, 31, 3, 00, 0).getTime();
 
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+          // Se o tempo já esgotou, substitui a grelha do temporizador por uma mensagem de aviso
+          const expiredHTML = "<div style='grid-column: span 4; font-size: 13px; font-weight: 800; color: var(--dark-accent); padding: 8px; letter-spacing: 0.5px;'>COLEÇÃO JÁ LANÇADA 👻</div>";
+          
+          ['tDays', 'tHours', 'tMins', 'tSecs'].forEach(id => {
+            const parent = document.getElementById(id)?.closest('.timer-grid');
+            if (parent && !parent.dataset.expired) {
+              parent.innerHTML = expiredHTML;
+              parent.dataset.expired = "true";
+            }
+          });
+
+          ['tDays2', 'tHours2', 'tMins2', 'tSecs2'].forEach(id => {
+            const parent = document.getElementById(id)?.closest('.timer-grid');
+            if (parent && !parent.dataset.expired2) {
+              parent.innerHTML = expiredHTML;
+              parent.dataset.expired2 = "true";
+            }
+          });
+          return;
+        }
+
+        // Cálculos de dias, horas, minutos e segundos restantes
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const dStr = days < 10 ? '0' + days : days;
+        const hStr = hours < 10 ? '0' + hours : hours;
+        const mStr = minutes < 10 ? '0' + minutes : minutes;
+        const sStr = seconds < 10 ? '0' + seconds : seconds;
+
+        // Atualiza os elementos na página principal
         if(document.getElementById('tDays')) {
           document.getElementById('tDays').innerText = dStr;
           document.getElementById('tHours').innerText = hStr;
@@ -1012,6 +1098,7 @@
           document.getElementById('tSecs').innerText = sStr;
         }
 
+        // Atualiza os elementos na página de Drop
         if(document.getElementById('tDays2')) {
           document.getElementById('tDays2').innerText = dStr;
           document.getElementById('tHours2').innerText = hStr;
@@ -1027,7 +1114,6 @@
       document.getElementById('modalQtyText').innerText = "1";
       document.getElementById('modalProductName').innerText = name + " - " + price + " MC";
 
-      // Procura o produto clicado para carregar as cores específicas dele
       const prod = productsData.find(p => p.name === name);
       const colorsToDisplay = (prod && prod.colors && prod.colors.length > 0) 
         ? prod.colors 
@@ -1035,7 +1121,6 @@
 
       selectedColor = colorsToDisplay[0];
 
-      // Desenha os botões de cores dinamicamente no modal
       const container = document.getElementById('modalColorOptionsContainer');
       container.innerHTML = colorsToDisplay.map((c, idx) => `
         <button class="color-btn ${idx === 0 ? 'selected' : ''}" onclick="selectColor('${c}', this)">${c}</button>
@@ -1058,7 +1143,7 @@
 
     function confirmAddToCart(event) {
       if (pendingItem) {
-        let existing = cart.find(i => i.name === pendingItem.name && i.color === selectedColor);
+        let existing = cart.find(i => i.name === pendingItem.name && i.color === selectedColor && !i.isFreebie);
         if (existing) {
           existing.qty = (existing.qty || 1) + modalSelectedQty;
         } else {
@@ -1099,6 +1184,100 @@
         saveAndSyncCart();
         openCart();
       }
+    }
+
+        function applyCoupon() {
+      const code = document.getElementById('couponInput').value.trim().toUpperCase();
+      const msgEl = document.getElementById('couponMessage');
+      msgEl.style.display = 'block';
+
+      // 1. Limpa brindes anteriores do carrinho
+      cart = cart.filter(item => !item.isFreebie);
+
+      // 2. TABELA COMPLETA DE CUPÕES
+      // Podes configurar cupões com desconto, com brinde, ou APENAS com brinde (percent: 0)
+      const validCoupons = {
+        "HALLOWEEN26": {
+          percent: 25, // 25% de desconto
+          gift: { name: "Patent Leather Hair Clip", color: "Rosa-gerânio", section: "MiuWear" },
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-11-01T03:00:00"
+        },
+        " ": {
+          percent: 0,  // 0% de desconto (não desconta nada no preço)
+          gift: { name: "Aube Sunglasses", color: "Pink Lenses", section: "MiuWear" }, // Apenas oferece este presente
+          startDate: "2026-10-30T00:00:00",
+          endDate: "2026-11-10T23:59:59"
+        },
+        " ": {
+          percent: 25, // 25% de desconto sem presente
+          gift: null,
+          startDate: "2026-11-20T00:00:00",
+          endDate: "2026-11-30T23:59:59"
+        }
+      };
+
+      const coupon = validCoupons[code];
+      const now = new Date();
+
+      // 3. VERIFICAÇÃO DE VALIDADE:
+      if (!coupon) {
+        msgEl.style.color = "#d9534f";
+        msgEl.innerText = "❌ Cupão inexistente.";
+        resetCouponState();
+        return;
+      }
+
+      const start = new Date(coupon.startDate);
+      const end = new Date(coupon.endDate);
+
+      if (now < start) {
+        msgEl.style.color = "#d9534f";
+        msgEl.innerText = "⏳ Este cupão ainda não está ativo!";
+        resetCouponState();
+        return;
+      }
+
+      if (now > end) {
+        msgEl.style.color = "#d9534f";
+        msgEl.innerText = "❌ Este cupão já expirou.";
+        resetCouponState();
+        return;
+      }
+
+      // 4. APLICAÇÃO DAS REGRAS (DESCONTO E/OU BRINDE):
+      appliedCouponCode = code;
+      discountPercent = coupon.percent || 0;
+
+      if (coupon.gift) {
+        freebieItem = {
+          id: 'freebie_' + Date.now(),
+          name: coupon.gift.name + " (Oferta ✨)",
+          price: 0,
+          section: coupon.gift.section || "MiuWear",
+          color: coupon.gift.color || "Exclusivo",
+          qty: 1,
+          isFreebie: true
+        };
+        cart.push(freebieItem);
+      }
+
+      let feedbackMsg = `✨ Cupão "${code}" aplicado!`;
+      if (discountPercent > 0) feedbackMsg += ` (${discountPercent}% OFF)`;
+      if (coupon.gift) feedbackMsg += ` + Brinde grátis 🎁`;
+
+      msgEl.style.color = "#2e7d32";
+      msgEl.innerText = feedbackMsg;
+
+      saveAndSyncCart();
+      openCart();
+    }
+
+    function resetCouponState() {
+      appliedDiscount = 0;
+      discountPercent = 0;
+      appliedCouponCode = "";
+      updateTotal();
     }
 
     function playFlyingAnimation(event, itemName) {
@@ -1163,8 +1342,9 @@
       } else {
         let grouped = {};
         cart.forEach(item => {
-          if (!grouped[item.section]) grouped[item.section] = [];
-          grouped[item.section].push(item);
+          let secKey = item.isFreebie ? "Ofertas & Brindes 🎁" : item.section;
+          if (!grouped[secKey]) grouped[secKey] = [];
+          grouped[secKey].push(item);
         });
 
         let html = "";
@@ -1173,6 +1353,7 @@
           
           grouped[section].forEach(item => {
             let q = item.qty || 1;
+            let displayPrice = item.isFreebie ? "Grátis ✨" : `${item.price * q} MC`;
             html += `
               <div class="cart-item-row">
                 <div class="cart-item-info">
@@ -1183,12 +1364,13 @@
                   </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
+                  ${!item.isFreebie ? `
                   <div class="qty-controls">
                     <button class="btn-qty" onclick="changeQuantity(${item.id}, -1)">-</button>
                     <span class="item-qty-text">${q}x</span>
                     <button class="btn-qty" onclick="changeQuantity(${item.id}, 1)">+</button>
-                  </div>
-                  <div><strong>${item.price * q} MC</strong></div>
+                  </div>` : `<span style="font-size:12px; font-weight:700; color:var(--candy-peach);">1x</span>`}
+                  <div><strong>${displayPrice}</strong></div>
                 </div>
               </div>
             `;
@@ -1277,8 +1459,20 @@
     }
 
     function updateTotal() {
-      const subtotal = cart.reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
-      document.getElementById('cartTotal').innerText = (subtotal + currentShippingCost) + " MC";
+      const subtotal = cart.filter(i => !i.isFreebie).reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
+      
+      if (discountPercent > 0) {
+        appliedDiscount = (subtotal * discountPercent) / 100;
+      }
+
+      let finalTotal = subtotal + currentShippingCost - appliedDiscount;
+      if (finalTotal < 0) finalTotal = 0;
+
+      let totalText = finalTotal.toFixed(0) + " MC";
+      if (appliedDiscount > 0) {
+        totalText = `<span style="text-decoration: line-through; color: #999; font-size: 13px; margin-right: 6px;">${(subtotal + currentShippingCost).toFixed(0)} MC</span> ${finalTotal.toFixed(0)} MC`;
+      }
+      document.getElementById('cartTotal').innerHTML = totalText;
     }
 
     function openCheckoutModal() {
@@ -1310,11 +1504,12 @@
         shippingDetail += ` - ${customDate}`;
       }
 
-      let itemsText = cart.map(i => `▫️ **${i.qty || 1}x** ${i.name} • _${i.color}_ \`(${i.price * (i.qty || 1)} MC)\``).join('\n');
+      let itemsText = cart.map(i => i.isFreebie ? `🎁 **${i.name}** • _${i.color}_ \`(Grátis)\`` : `▫️ **${i.qty || 1}x** ${i.name} • _${i.color}_ \`(${i.price * (i.qty || 1)} MC)\``).join('\n');
 
       let descriptionText = `🌸 **NOVA ENCOMENDA MIUCODES**\n`;
       descriptionText += `───────────────\n\n`;
       descriptionText += `👤 **Cliente:** ${name} (\`@${user}\`)\n`;
+      if (appliedCouponCode) descriptionText += `🎟️ **Cupão Aplicado:** ${appliedCouponCode} (${discountPercent}% OFF)\n`;
       descriptionText += `🎁 **Destino:** ${recipientType}\n`;
 
       if (recipientType === 'Para outra pessoa') {
@@ -1346,6 +1541,7 @@
       let telegramMessage = `🌸 *NOVA ENCOMENDA MIUCODES*\n`;
       telegramMessage += `───────────────\n\n`;
       telegramMessage += `👤 *Cliente:* ${name} (\`@${user}\`)\n`;
+      if (appliedCouponCode) telegramMessage += `🎟️ *Cupão Aplicado:* ${appliedCouponCode} (${discountPercent}% OFF)\n`;
       telegramMessage += `🎁 *Destino:* ${recipientType}\n`;
 
       if (recipientType === 'Para outra pessoa') {
