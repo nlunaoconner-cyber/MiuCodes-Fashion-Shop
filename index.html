@@ -537,7 +537,7 @@
     <div class="home-content-container">
       <!-- BLOCO JUNTANDO O VÍDEO E A CONTAGEM -->
       <div class="halloween-drop-card">
-        <div class="halloween-drop-title">🎃 Special Halloween Drop</div>
+        <div class="halloween-drop-title">Último lançamento: The Special Halloween 🎃</div>
         
         <!-- VÍDEO 16:9 DE HALLOWEEN -->
         <div class="video-container">
@@ -1082,7 +1082,7 @@
 
         if (distance < 0) {
           // Se o tempo já esgotou, substitui a grelha do temporizador por uma mensagem de aviso
-          const expiredHTML = "<div style='grid-column: span 4; font-size: 13px; font-weight: 800; color: var(--dark-accent); padding: 8px; letter-spacing: 0.5px;'>COLEÇÃO JÁ LANÇADA 👻</div>";
+          const expiredHTML = "<div style='grid-column: span 4; font-size: 13px; font-weight: 800; color: var(--dark-accent); padding: 8px; letter-spacing: 0.5px;'>Coleção Halloween já disponível! Confira tudo em MiuJewerelly. Nova coleção ainda não foi anunciada, volte depois.</div>";
           
           ['tDays', 'tHours', 'tMins', 'tSecs'].forEach(id => {
             const parent = document.getElementById(id)?.closest('.timer-grid');
@@ -1220,24 +1220,141 @@
       // 2. TABELA COMPLETA DE CUPÕES
       // Podes configurar cupões com desconto, com brinde, ou APENAS com brinde (percent: 0)
       const validCoupons = {
-        "HALLOWEEN26": {
-          percent: 25, // 25% de desconto
-          gift: { name: "Conta Pendente Evil Queen Apple Villains", section: "MiuJewerelly" },
+        "SLAZAY26": {
+          percent: 15, // 15% de desconto
           startDate: "2026-10-31T03:00:00",
-          endDate: "2026-11-02T03:00:00"
+          endDate: "2026-12-31T00:00:00"
         },
-        " ": {
-          percent: 0,  // 0% de desconto (não desconta nada no preço)
-          gift: { name: "Aube Sunglasses", color: "Pink Lenses", section: "MiuWear" }, // Apenas oferece este presente
-          startDate: "2026-10-30T00:00:00",
-          endDate: "2026-11-10T23:59:59"
+        "VERSROW26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
         },
-        " ": {
-          percent: 25, // 25% de desconto sem presente
-          gift: null,
-          startDate: "2026-11-20T00:00:00",
-          endDate: "2026-11-30T23:59:59"
-        }
+        "PETALMAD26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "LAYAMART26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "NOCTVIO26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "THUGALI26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "DIERSALL26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "VIESANNA26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "SWEOLI26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "SOLHARY26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "ETHEST26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "BOERATH26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "SKEUALE26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "ETHLARA26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "SKRTSUM26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "HUSTISA26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "ECLYPS26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "IFORAYLA26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "THEWANNE26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "POSTEMI26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "ITSMELB26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "SWIZZSO26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "OUTLSKY26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "MUSEIARIT26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "MIGHTATH26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "VERSOCARO26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
+        "VIKIASTR26": {
+          percent: 15, // 15% de desconto
+          startDate: "2026-10-31T03:00:00",
+          endDate: "2026-12-31T00:00:00"
+        },
       };
 
       const coupon = validCoupons[code];
