@@ -16,7 +16,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
     body { background-color: var(--light-bg); color: var(--dark-accent); padding-bottom: 70px; font-size: 15px; }
 
-    /* BARRA SUPERIOR COM AS 4 FRASES INTERCALADAS */
+    /* BARRA SUPERIOR */
     .top-bar { 
       background: #000; 
       color: #fff; 
@@ -58,7 +58,14 @@
     .logo { font-size: 20px; font-weight: 700; letter-spacing: 1px; cursor: pointer; }
     
     .header-right { display: flex; align-items: center; gap: 15px; }
-    .cart-icon { position: relative; cursor: pointer; font-size: 22px; transition: transform 0.2s ease; }
+    
+    .search-icon-btn {
+      background: none; border: none; font-size: 20px; cursor: pointer; color: var(--dark-accent);
+      display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease;
+    }
+    .search-icon-btn:active { transform: scale(0.9); }
+
+    .cart-icon { position: relative; cursor: pointer; font-size: 22px; transition: transform 0.2s ease; display: flex; align-items: center; }
     .cart-icon.bounce { animation: cartBounce 0.5s ease-in-out; }
     @keyframes cartBounce {
       0% { transform: scale(1); }
@@ -112,7 +119,7 @@
     .view { display: none; }
     .view.active { display: block; }
 
-    /* Hero Banner Retangular (Ajustado com o padding igual ao container de baixo) */
+    /* Hero Banner Retangular */
     .hero-container {
       padding: 0 15px 10px 15px;
       max-width: 600px;
@@ -138,7 +145,7 @@
       margin-bottom: 0;
     }
 
-    /* Content Layout na Home */
+    /* Layout na Home */
     .home-content-container {
       padding: 0 15px 30px 15px;
       max-width: 600px;
@@ -148,7 +155,7 @@
       gap: 16px;
     }
 
-    /* BLOCO UNIFICADO: VÍDEO + CONTAGEM HALLOWEEN */
+    /* VÍDEO + CONTAGEM */
     .halloween-drop-card {
       background: #ffffff;
       border: 1px solid rgba(240, 195, 182, 0.4);
@@ -298,6 +305,47 @@
 
     .page-title { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 6px; letter-spacing: 0.5px; }
     .page-subtitle { font-size: 14px; color: #666; text-align: center; margin-bottom: 22px; }
+
+    /* BARRA DE PESQUISA DE PRODUTOS */
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 13px 40px 13px 16px;
+      border-radius: 18px;
+      border: 1.5px solid rgba(203, 181, 205, 0.5);
+      background: var(--white);
+      color: var(--dark-accent);
+      font-size: 14px;
+      font-weight: 500;
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--candy-peach);
+      box-shadow: 0 4px 15px rgba(240, 195, 182, 0.25);
+    }
+    .search-clear-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #eee;
+      border: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: bold;
+      color: #555;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
 
     .filter-bar {
       display: flex; gap: 10px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 18px; scrollbar-width: none;
@@ -500,6 +548,8 @@
       <div class="logo" onclick="showView('homeView')">MiuCodes</div>
     </div>
     <div class="header-right">
+      <!-- BOTÃO DA LUPINHA -->
+      <button class="search-icon-btn" onclick="openSearchFromHeader()" title="Pesquisar produtos">🔍</button>
       <div class="cart-icon" id="cartIcon" onclick="openCart()">
         🛒 <span class="cart-count" id="cartCount">0</span>
       </div>
@@ -525,7 +575,7 @@
 
   <!-- VISTA 1: HOME PAGE -->
   <div id="homeView" class="view active">
-    <!-- Banner Retangular (Ajustado) -->
+    <!-- Banner Retangular -->
     <div class="hero-container">
       <section class="hero" id="heroSection">
         <h1 id="heroTitle">Welcome, Babe!</h1>
@@ -535,19 +585,19 @@
     </div>
 
     <div class="home-content-container">
-      <!-- BLOCO JUNTANDO O VÍDEO E A CONTAGEM -->
+      <!-- O VÍDEO E A CONTAGEM (CLASSES CORRIGIDAS) -->
       <div class="halloween-drop-card">
-        <div class="halloween-drop-title">Último lançamento: The Special Halloween 🎃</div>
+        <div class="halloween-drop-title">Último lançamento: The Winter ☃️☃️☃️</div>
         
-        <!-- VÍDEO 16:9 DE HALLOWEEN -->
+        <!-- VÍDEO 16:9 -->
         <div class="video-container">
           <video autoplay loop muted playsinline>
-            <source src="https://raw.githubusercontent.com/nlunaoconner-cyber/MiuCodes-Media/main/lv_0_20261030132403.mp4" type="video/mp4">
+            <source src="https://raw.githubusercontent.com/nlunaoconner-cyber/MiuCodes-Media/7ecc581ed157fafdb3ac17a4929e97fd79e6b735/Cleverrrr_pindown.io_1795102474.mp4" type="video/mp4">
             O teu navegador não suporta vídeos.
           </video>
         </div>
 
-        <!-- CONTAGEM DECRESCENTE INTEGRADAS -->
+        <!-- CONTAGEM DECRESCENTE -->
         <div class="timer-grid">
           <div class="timer-box"><div class="timer-num" id="tDays">02</div><div class="timer-label">Dias</div></div>
           <div class="timer-box"><div class="timer-num" id="tHours">14</div><div class="timer-label">Horas</div></div>
@@ -560,7 +610,7 @@
       <div class="home-intro-card">
         <div class="home-intro-badge">SOBRE A MIUCODES</div>
         <p class="home-intro-text">
-          A <strong> MiuCodes </strong> foi fundada pela <strong> Elyndra Hécate D'Astre </strong> com o objetivo de integrar todas as partes e desenvolver um ambiente melhor. A <strong> MiuCodes </strong> não se limita a uma linha de roupas ou estilo: é um ecossistema completo onde a moda está inserida através da <strong> MiuCodes Fashion</strong>. Elyndra sempre foi apaixonada por criar um espaço envolvente, inspirador e cheio de criatividade, no qual o público pudesse verdadeiramente fazer parte.
+          A <strong> MiuCodes </strong> foi fundada pela <strong> Elyndra Luna Hécate D'Astre </strong> com o objetivo de integrar todas as partes e desenvolver um ambiente melhor. A <strong> MiuCodes </strong> não se limita a uma linha de roupas ou estilo: é um ecossistema completo onde a moda está inserida através da <strong> MiuCodes Fashion</strong>. Elyndra sempre foi apaixonada por criar um espaço envolvente, inspirador e cheio de criatividade, no qual o público pudesse verdadeiramente fazer parte.
         </p>
         <p class="home-intro-text">
           O nosso universo expande-se por várias causas e áreas dedicadas: na ação social e preservação com a <strong> MiuForGood </strong>(que integra a MiuOcean, MiuHope, MiuEarth e MiuCare); no amor aos animais com a <strong> MiuPet Adoption</strong>, a <strong> MiuPet Vet </strong> e o estudo da vida selvagem na <strong> MiuPet World</strong>; no cuidado hospitalar com a <strong> MiuHealth Hospital</strong>; e na cultura, entretenimento e desporto através da <strong> MiuCine </strong> (atores, músicos e cantores), <strong> MiuTalk </strong> (o nosso podcast sobre todos os assuntos), <strong> MiuBallet</strong>, <strong> MiuSport </strong> e o <strong> MiuClub </strong> (que ao longo do ano lança novos clubes).
@@ -616,14 +666,14 @@
       </div>
       
       <img src="https://lh3.googleusercontent.com/d/1_3GxIXZDV0KxubghzAh5YgF1t1jAcads" alt="Elyndra D'Astre" class="universe-avatar" />
-      <h2>Elyndra D'Astre</h2>
+      <h2>Luna D'Astre</h2>
       <div class="subtitle">Criadora & Fundadora</div>
 
       <div class="universe-bio">
-        Olá! Sou a Elyndra. Criei o ecossistema Miu para trazer elegância, criatividade e funcionalidade a vários setores. Além da alta costura da <strong>MiuCodes</strong>, o nosso universo expande-se por vários projetos dedicados como a <strong>MiuPet</strong>, <strong>MiuVet</strong>, <strong>MiuHealthHospital</strong>, <strong>MiuForGood</strong>, entre outros.
+        Olá! Sou a Luna. Criei o ecossistema Miu para trazer elegância, criatividade e funcionalidade a vários setores. Além da alta costura da <strong>MiuCodes</strong>, o nosso universo expande-se por vários projetos dedicados como a <strong>MiuPet</strong>, <strong>MiuVet</strong>, <strong>MiuHealthHospital</strong>, <strong>MiuForGood</strong>, entre outros. Verifique todas as novidades e nossos formulários no nosso website.
       </div>
 
-      <a href="SITE_AQUI" target="_blank" class="btn-universe">Conhecer o Universo Miu 🌐</a>
+      <a href="https://sites.google.com/view/miucodes-original/p%C3%A1gina-inicial" target="_blank" class="btn-universe">Conhecer o Universo Miu 🌐</a>
     </div>
   </div>
 
@@ -638,10 +688,10 @@
       
       <!-- VÍDEO + CONTAGEM NA PÁGINA DE DROP -->
       <div class="halloween-drop-card">
-        <div class="halloween-drop-title">🎃 Special Halloween Drop</div>
+        <div class="halloween-drop-title">Winter Drop</div>
         <div class="video-container">
           <video autoplay loop muted playsinline>
-            <source src="https://raw.githubusercontent.com/nlunaoconner-cyber/MiuCodes-Media/main/lv_0_20261030132403.mp4" type="video/mp4">
+            <source src="https://raw.githubusercontent.com/nlunaoconner-cyber/MiuCodes-Media/7ecc581ed157fafdb3ac17a4929e97fd79e6b735/Cleverrrr_pindown.io_1795102474.mp4" type="video/mp4">
             O teu navegador não suporta vídeos.
           </video>
         </div>
@@ -655,7 +705,7 @@
     </div>
   </div>
 
-  <!-- VISTA 3: PRODUTOS COM FILTROS DINÂMICOS POR SEÇÃO -->
+  <!-- VISTA 3: PRODUTOS COM FILTROS POR SEÇÃO -->
   <div id="productsView" class="view">
     <div class="container">
       <div class="back-bar">
@@ -664,6 +714,18 @@
 
       <div class="page-title" id="currentCategoryTitle">MiuWear</div>
       <div class="page-subtitle">Coleção Exclusiva</div>
+
+      <!-- BARRA DE PESQUISA GLOBAL -->
+      <div class="search-wrapper">
+        <input 
+          type="text" 
+          id="productSearchInput" 
+          class="search-input" 
+          placeholder="🔍 Pesquisar em todas as coleções..." 
+          oninput="handleGlobalSearch()" 
+        />
+        <button class="search-clear-btn" id="clearSearchBtn" onclick="clearGlobalSearch()">✕</button>
+      </div>
 
       <!-- FILTROS DINÂMICOS -->
       <div class="filter-bar" id="filterBarContainer"></div>
@@ -776,7 +838,7 @@
         <input type="text" id="custUser" placeholder="dulceuis" />
       </div>
 
-      <!-- QUEM IRÁ RECEBER (CARDS AESTHETIC) -->
+      <!-- QUEM IRÁ RECEBER -->
       <div class="form-group">
         <label>Quem irá receber esta encomenda?</label>
         <div class="choice-options">
@@ -818,7 +880,7 @@
           </div>
         </div>
 
-        <!-- MENSAGEM PERSONALIZADA (APENAS PARA OUTRA PESSOA) -->
+        <!-- MENSAGEM PERSONALIZADA -->
         <div class="form-group" style="margin-top: 15px;">
           <label>Gostaria de incluir uma mensagem personalizada?</label>
           <div class="choice-options">
@@ -870,7 +932,7 @@
     }
     setInterval(rotateTopBarMessage, 5500);
 
-    // PRODUTOS COM CORES INDIVIDUAIS E EXCLUSIVAS PARA CADA UM
+    // PRODUTOS COM CORES INDIVIDUAIS 
     const productsData = [
       // MiuWear
       { name: "Bow-Detail Heeled Sandals", section: "MiuWear", category: "Calçado", price: 1200, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/206733af-3050-4340-818f-074a239bc698.jpg", colors: ["Castanho"] },
@@ -884,6 +946,8 @@
       { name: "Patent Leather Slingbacks with Buckles", section: "MiuWear", category: "Calçado", price: 1100, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/9ac82d1a-7f8a-4033-aad1-ad665099ce37.png", colors: ["Preto", "Carmin"] },
       { name: "Leather Pumps", section: "MiuWear", category: "Calçado", price: 1196, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/6dc24e31-5202-4382-be1e-5d5771d708dc.png", colors: ["Branco"] },
       { name: "Embroidered Drill Ballerinas", section: "MiuWear", category: "Calçado", price: 1401, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/ddf081f1-74b8-4a08-8bba-6369802c22ba.png", colors: ["Azul-pastel"] },
+      { name: "Aventure Suede Bag", section: "MiuWear", category: "Novo", price: 3550, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/8cfe3b10-59ad-4a9b-9adc-6501a30c4a6d.jpg", colors: ["Castanho"] },
+      { name: "MC01X", section: "MiuWear", category: "Novo", price: 320, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/3117159c-2b76-4ed8-a0cf-d935a23d5233.jpg"},
 
       // MiuJewellery
       { name: "Conta Pendente Espantalho Abóbora", section: "MiuJewellery", category: "Halloween", price: 79, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/7738c683-0024-4062-9547-a19d96e722a0.webp"},
@@ -912,7 +976,7 @@
       { name: "Conta Pendente Espantalho Abóbora", section: "MiuJewellery", category: "Halloween", price: 79, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/7738c683-0024-4062-9547-a19d96e722a0.webp"},
 
       // MiuBallet
-      { name: "none", section: "MiuBallet", category: "Sapatilha de ponta", price: 60, badge: "New", img: " ", colors: ["none"] },
+      { name: "Strap Ballet Flats", section: "MiuBallet", category: "Novo", price: 850, badge: "New", img: "https://i.supaimg.com/043ca901-a6cf-4d48-a475-1a0b403efffb/0c63cc82-53da-401d-92bd-1cf4240e260f.jpg", colors: ["rosa", "azul", "preto", "beige"] },
       
       // MiuKids
       { name: "none", section: "MiuKids", category: "Blusas", price: 20, badge: "new", img: "none", colors: ["none"] },
@@ -920,10 +984,10 @@
 
     // DEFINIÇÃO DOS FILTROS POR CADA SEÇÃO
     const categoryFilters = {
-      "MiuWear": ["Tudo", "Blusas", "Calças", "Casacos", "Bolsas", "Óculos", "Acessórios", "Calçado"],
-      "MiuJewellery": ["Tudo", "Halloween", "Brincos", "Colares", "Pulseiras", "Conjuntos", "Edição especial"],
-      "MiuBallet": ["Tudo", "Tutu", "Sapatilha de ponta", "Collants", "Acessórios"],
-      "MiuKids": ["Tudo", "Calções", "Calças", "Blusas", "Calçado", "Peluches"]
+      "MiuWear": ["Tudo", "Novo", "Blusas", "Calças", "Casacos", "Bolsas", "Óculos", "Acessórios", "Calçado"],
+      "MiuJewellery": ["Tudo", "Novo", "Halloween", "Brincos", "Colares", "Pulseiras", "Conjuntos", "Edição especial"],
+      "MiuBallet": ["Tudo", "Novo", "Tutu", "Sapatilha de ponta", "Collants", "Acessórios"],
+      "MiuKids": ["Tudo", "Novo", "Calções", "Calças", "Blusas", "Calçado", "Peluches"]
     };
 
     let cart = [];
@@ -932,6 +996,7 @@
     let modalSelectedQty = 1;
 
     let activeSection = "MiuWear";
+    let currentFilter = 'Tudo';
     let currentShippingName = "Standard";
     let currentShippingCost = 0;
 
@@ -1023,10 +1088,78 @@
 
     function openCategory(categoryName) {
       activeSection = categoryName;
+      currentFilter = 'Tudo';
       document.getElementById('currentCategoryTitle').innerText = categoryName;
+      
+      const searchInput = document.getElementById('productSearchInput');
+      if (searchInput) searchInput.value = '';
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
+
       renderFilters(categoryName);
       filterProducts('Tudo');
       showView('productsView');
+    }
+
+    function openSearchFromHeader() {
+      showView('productsView');
+      const searchInput = document.getElementById('productSearchInput');
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function handleGlobalSearch() {
+      const searchInput = document.getElementById('productSearchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const searchTerm = searchInput.value.trim();
+
+      if (clearBtn) {
+        clearBtn.style.display = searchTerm.length > 0 ? 'flex' : 'none';
+      }
+
+      const container = document.getElementById('productContainer');
+      const lowerSearch = searchTerm.toLowerCase();
+
+      if (lowerSearch === "") {
+        filterProducts(currentFilter);
+        return;
+      }
+
+      document.getElementById('currentCategoryTitle').innerText = "Pesquisa Global";
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+
+      let filtered = productsData.filter(p => p.name.toLowerCase() !== 'none' && p.name.toLowerCase().includes(lowerSearch));
+
+      if (filtered.length === 0) {
+        container.innerHTML = "<p style='grid-column: span 2; text-align:center; color:#888; padding:20px; font-size:14px;'>Nenhum artigo encontrado em nenhuma coleção.</p>";
+        return;
+      }
+
+      container.innerHTML = filtered.map(p => `
+        <div class="product-card">
+          <div class="product-img" style="background-image: url('${p.img}')">
+            <span class="product-badge">${p.badge}</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <div class="product-price">${p.price} MC</div>
+          </div>
+          <button class="btn-add" onclick="triggerColorModal('${p.name}', ${p.price}, '${p.section}')">Adicionar</button>
+        </div>
+      `).join('');
+    }
+
+    function clearGlobalSearch() {
+      const searchInput = document.getElementById('productSearchInput');
+      if (searchInput) searchInput.value = '';
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
+
+      document.getElementById('currentCategoryTitle').innerText = activeSection;
+      renderFilters(activeSection);
+      filterProducts('Tudo');
     }
 
     function renderFilters(section) {
@@ -1039,18 +1172,30 @@
     }
 
     function filterProducts(filter, btn) {
+      const searchInput = document.getElementById('productSearchInput');
+      if (searchInput && searchInput.value.trim() !== "") {
+        searchInput.value = '';
+        const clearBtn = document.getElementById('clearSearchBtn');
+        if (clearBtn) clearBtn.style.display = 'none';
+        document.getElementById('currentCategoryTitle').innerText = activeSection;
+      }
+
+      currentFilter = filter || 'Tudo';
+
       if (btn) {
         document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-      } else {
+      } else if (currentFilter === 'Tudo') {
+        document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
         const firstBtn = document.querySelector('.filter-chip');
         if (firstBtn) firstBtn.classList.add('active');
       }
 
       const container = document.getElementById('productContainer');
-      let filtered = productsData.filter(p => p.section === activeSection);
-      if (filter && filter !== 'Tudo') {
-        filtered = filtered.filter(p => p.category.toLowerCase() === filter.toLowerCase());
+      let filtered = productsData.filter(p => p.section === activeSection && p.name.toLowerCase() !== 'none');
+      
+      if (currentFilter !== 'Tudo') {
+        filtered = filtered.filter(p => p.category.toLowerCase() === currentFilter.toLowerCase());
       }
 
       if (filtered.length === 0) {
@@ -1073,15 +1218,13 @@
     }
     
     function startTimer() {
-      // DEFINE A DATA E HORA EXATA DO LANÇAMENTO (Ano, Mês [0 a 11, sendo 9 = Outubro], Dia, Hora, Minuto)
-      const targetDate = new Date(2026, 9, 31, 3, 00, 0).getTime();
+      const targetDate = new Date(2026, 10, 28, 0, 00, 0).getTime();
 
       setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
 
         if (distance < 0) {
-          // Se o tempo já esgotou, substitui a grelha do temporizador por uma mensagem de aviso
           const expiredHTML = "<div style='grid-column: span 4; font-size: 13px; font-weight: 800; color: var(--dark-accent); padding: 8px; letter-spacing: 0.5px;'>Coleção Halloween já disponível! Confira tudo em MiuJewerelly. Nova coleção ainda não foi anunciada, volte depois.</div>";
           
           ['tDays', 'tHours', 'tMins', 'tSecs'].forEach(id => {
@@ -1102,7 +1245,6 @@
           return;
         }
 
-        // Cálculos de dias, horas, minutos e segundos restantes
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -1113,7 +1255,6 @@
         const mStr = minutes < 10 ? '0' + minutes : minutes;
         const sStr = seconds < 10 ? '0' + seconds : seconds;
 
-        // Atualiza os elementos na página principal
         if(document.getElementById('tDays')) {
           document.getElementById('tDays').innerText = dStr;
           document.getElementById('tHours').innerText = hStr;
@@ -1121,7 +1262,6 @@
           document.getElementById('tSecs').innerText = sStr;
         }
 
-        // Atualiza os elementos na página de Drop
         if(document.getElementById('tDays2')) {
           document.getElementById('tDays2').innerText = dStr;
           document.getElementById('tHours2').innerText = hStr;
@@ -1209,163 +1349,55 @@
       }
     }
 
-        function applyCoupon() {
+    function applyCoupon() {
       const code = document.getElementById('couponInput').value.trim().toUpperCase();
       const msgEl = document.getElementById('couponMessage');
       msgEl.style.display = 'block';
 
-      // 1. Limpa brindes anteriores do carrinho
       cart = cart.filter(item => !item.isFreebie);
 
-      // 2. TABELA COMPLETA DE CUPÕES
-      // Podes configurar cupões com desconto, com brinde, ou APENAS com brinde (percent: 0)
       const validCoupons = {
-        "SLAZAY26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "VERSROW26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "PETALMAD26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "LAYAMART26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "NOCTVIO26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "THUGALI26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "DIERSALL26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "VIESANNA26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "SWEOLI26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "SOLHARY26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "ETHEST26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "BOERATH26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "SKEUALE26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "ETHLARA26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "SKRTSUM26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "HUSTISA26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "ECLYPS26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "IFORAYLA26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "THEWANNE26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "POSTEMI26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "ITSMELB26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "SWIZZSO26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "OUTLSKY26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "MUSEIARIT26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "MIGHTATH26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "VERSOCARO26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "VIKIASTR26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
-        "MADFERR26": {
-          percent: 15, // 15% de desconto
-          startDate: "2026-10-31T03:00:00",
-          endDate: "2026-12-31T00:00:00"
-        },
+        "SLAZAY26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "VERSROW26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "PETALMAD26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "LAYAMART26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "NOCTVIO26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "DIERSALL26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "VIESANNA26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "SWEOLI26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "SOLHARY26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "ETHEST26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "BOERATH26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "SKEUALE26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "ETHLARA26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "SKRTSUM26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "HUSTISA26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "ECLYPS26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "IFORAYLA26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "THEWANNE26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "POSTEMI26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "ITSMELB26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "SWIZZSO26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "OUTLSKY26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "MUSEIARIT26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "MIGHTATH26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "VIKIASTR26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "MADFERR26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "SXNAUR26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "VILUVIO26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "MVNAN26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "LUVAN26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "NOTEAME26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "BLAKMAR26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "FLEULI26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "SELMAI26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "VIORLIL26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
+        "MIUMAB26": { percent: 15, startDate: "2026-10-31T03:00:00", endDate: "2026-12-31T00:00:00" },
       };
 
       const coupon = validCoupons[code];
       const now = new Date();
 
-      // 3. VERIFICAÇÃO DE VALIDADE:
       if (!coupon) {
         msgEl.style.color = "#d9534f";
         msgEl.innerText = "❌ Cupão inexistente.";
@@ -1390,7 +1422,6 @@
         return;
       }
 
-      // 4. APLICAÇÃO DAS REGRAS (DESCONTO E/OU BRINDE):
       appliedCouponCode = code;
       discountPercent = coupon.percent || 0;
 
@@ -1733,7 +1764,7 @@
           await Promise.all(promises);
         }
 
-        alert("✨ Pedido concluído com sucesso!");
+        alert("Pedido concluído com sucesso!");
         cart = [];
         localStorage.removeItem("MiuCodes_cart");
         updateCartBadge();
